@@ -1,14 +1,14 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
   aliases                       = [var.domain_name]
 
-  depends_on                    = [aws_s3_bucket.root_bucket]
+  depends_on                    = [aws_s3_bucket.bucket]
   enabled                       = true
   is_ipv6_enabled               = true
 
   default_root_object           = "index.html"
 
   origin {
-    domain_name                 = aws_s3_bucket.root_bucket.website_endpoint
+    domain_name                 = aws_s3_bucket.bucket.website_endpoint
     origin_id                   = "S3-.${var.bucket_name}"
 
     custom_origin_config {
