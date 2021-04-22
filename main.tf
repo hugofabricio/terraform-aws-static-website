@@ -2,10 +2,6 @@ terraform {
   required_version = ">= 0.13.6"
 }
 
-provider "aws" {
-  region = var.aws_region
-}
-
 module "static_website" {
   source = "./modules/static-website"
 
